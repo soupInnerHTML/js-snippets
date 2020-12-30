@@ -12,7 +12,8 @@ let translateChars = (string, rootIndex, ruOrEn = -(rootIndex - 1)) => (
 )
 
 let clearTranslateFromInput = index => {
-    window.getSelection().baseNode.data = translateChars(stringToTranslate, index);
+    let base = window.getSelection().baseNode.data
+    window.getSelection().baseNode.data = base.replace(window.getSelection().toString(), translateChars(stringToTranslate, index));
     [...window.getSelection().anchorNode.childNodes].map(e => e.value = translateChars(stringToTranslate, index))
 }
 
